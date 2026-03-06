@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salidas - Sistema de Estacionamiento</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .search-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .search-bar input {
+            flex: 1;
+        }
+        
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .table-actions button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-grid .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        .entry-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .entry-info h4 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .entry-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-label {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 2px;
+        }
+        
+        .info-value {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .total-amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid,
+            .entry-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar (igual que dashboard) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-wrapper">
+                    <div class="logo">P</div>
+                    <div class="logo-text">
+                        <h3>Sistema de</h3>
+                        <p>Estacionamiento</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-section">
+                <h4>Usuario</h4>
+                <p class="user-name" id="userName"></p>
+                <p class="user-role">EMPLEADO</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </a>
+                
+                <a href="vehiculos.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 6l3 4s2 2 2 5-2 3-2 3H5s-2 0-2-3 2-5 2-5l3-4m0 0h8m-8 0v4m8-4v4m-8 4h8"></path>
+                    </svg>
+                    Vehículos
+                </a>
+                
+                <a href="clientes.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    Clientes
+                </a>
+                
+                <a href="empleados.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Empleados
+                </a>
+                
+                <a href="entradas.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Entradas
+                </a>
+                
+                <a href="salidas.html" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Salidas
+                </a>
+                
+                <a href="reportes.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    Reportes
+                </a>
+                
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m11-6h-6m-6 0H1"></path>
+                    </svg>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn" onclick="logout()">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Registro de Salidas</h1>
+                <div class="header-info">
+                    <span class="connection-status">
+                        <span class="status-dot"></span>
+                        Conectado
+                    </span>
+                    <span class="user-info">
+                        
+                        <small>EMPLEADO</small>
+                    </span>
+                </div>
+            </header>
+            
+            <div class="content-wrapper">
+                <!-- Barra de búsqueda y botón -->
+                <div class="search-bar">
+                    <input 
+                        type="text" 
+                        id="searchInput" 
+                        class="form-control" 
+                        placeholder="Buscar por placa o cliente..."
+                    >
+                    <button class="btn btn-primary" onclick="showAddSalidaModal()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                        </svg>
+                        Registrar Salida
+                    </button>
+                </div>
+                
+                <!-- Tabs para vehículos activos y salidas registradas -->
+                <div class="tabs" style="margin-bottom: 20px;">
+                    <button class="btn btn-secondary active" id="tabActivos" onclick="showTab('activos')">
+                        Vehículos Activos
+                    </button>
+                    <button class="btn btn-secondary" id="tabSalidas" onclick="showTab('salidas')">
+                        Salidas Registradas
+                    </button>
+                </div>
+                
+                <!-- Tabla de vehículos activos -->
+                <div class="card" id="activosContent">
+                    <h3>Vehículos sin salida registrada</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Entrada</th>
+                                    <th>Placa</th>
+                                    <th>Cliente</th>
+                                    <th>Ingreso</th>
+                                    <th>Tiempo</th>
+                                    <th>Nivel/Zona</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activosTableBody">
+                                <!-- Se llenará dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Tabla de salidas registradas -->
+                <div class="card" id="salidasContent" style="display: none;">
+                    <h3>Historial de salidas</h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID Salida</th>
+                                    <th>Placa</th>
+                                    <th>Cliente</th>
+                                    <th>Entrada</th>
+                                    <th>Salida</th>
+                                    <th>Tiempo Total</th>
+                                    <th>Monto</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="salidasTableBody">
+                                <!-- Se llenará dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Modal para registrar salida -->
+    <div id="salidaModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2 id="modalTitle">Registrar Salida</h2>
+                <button class="close-btn" onclick="closeSalidaModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="salidaForm">
+                    <!-- Información de la entrada -->
+                    <div class="entry-info" id="entryInfo" style="display: none;">
+                        <h4>Información de la entrada</h4>
+                        <div class="entry-info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Placa</span>
+                                <span class="info-value" id="infoPlaca">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Cliente</span>
+                                <span class="info-value" id="infoCliente">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Fecha/Hora Ingreso</span>
+                                <span class="info-value" id="infoIngreso">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Ubicación</span>
+                                <span class="info-value" id="infoUbicacion">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="idEntrada">Seleccionar Entrada Activa *</label>
+                            <select id="idEntrada" name="idEntrada" class="form-control" required onchange="loadEntryInfo()">
+                                <option value="">Seleccione...</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="codTipoVhc">Tipo de Vehículo *</label>
+                            <select id="codTipoVhc" name="codTipoVhc" class="form-control" required onchange="calculateAmount()">
+                                <option value="">Seleccione...</option>
+                                <option value="1">Automóvil (S/. 5.00/hora)</option>
+                                <option value="2">Motocicleta (S/. 3.00/hora)</option>
+                                <option value="3">Camioneta (S/. 7.00/hora)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="idCliente2">Cliente (opcional si es distinto al de la entrada)</label>
+                            <select id="idCliente2" name="idCliente2" class="form-control">
+                                <option value="">-- Mismo cliente de la entrada --</option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                            <label for="fechaSalida">Fecha de Salida *</label>
+                            <input 
+                                type="date" 
+                                id="fechaSalida" 
+                                name="fechaSalida" 
+                                class="form-control" 
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="horaSalida">Hora de Salida *</label>
+                            <input 
+                                type="time" 
+                                id="horaSalida" 
+                                name="horaSalida" 
+                                class="form-control" 
+                                required
+                            >
+                        </div>
+                    </div>
+                    
+                    <div class="total-amount" id="totalAmount">
+                        Total a pagar: S/. 0.00
+                    </div>
+                    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="closeSalidaModal()">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Registrar Salida</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/salidas.js"></script>
+</body>
+</html>

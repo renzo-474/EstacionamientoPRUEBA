@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Estacionamiento - Login</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-container">
+                <div class="logo">P</div>
+            </div>
+            
+            <h1>Sistema de</h1>
+            <h2>Estacionamiento</h2>
+            
+            <div class="user-info">
+                <p class="user-label">Usuario</p>
+                <p class="user-name"></p>
+                <p class="user-role">Empleado</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="username">Usuario *</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        required 
+                        pattern="^[a-zA-Z0-9]+$"
+                        title="Solo se permiten letras y números"
+                        placeholder="EMP001"
+                        maxlength="20"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Contraseña *</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        required
+                        placeholder="••••••••••"
+                        maxlength="50"
+                    >
+                </div>
+                
+                <button type="submit" class="login-button">Iniciar Sesión</button>
+            </form>
+            
+            <p class="version">Sistema de gestión de estacionamiento v1.0</p>
+        </div>
+    </div>
+    
+    <script src="js/auth.js"></script>
+    <script>
+       
+        document.getElementById('username').addEventListener('keypress', function(e) {
+       
+            const char = String.fromCharCode(e.keyCode || e.which);
+            const regex = /^[a-zA-Z0-9]$/;
+            
+            if (!regex.test(char)) {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+     
+        document.getElementById('username').addEventListener('paste', function(e) {
+            e.preventDefault();
+            
+         
+            const text = (e.clipboardData || window.clipboardData).getData('text');
+            
+        
+            const filteredText = text.replace(/[^a-zA-Z0-9]/g, '');
+            
+           
+            const input = e.target;
+            const start = input.selectionStart;
+            const end = input.selectionEnd;
+            const currentValue = input.value;
+            
+            const maxLength = parseInt(input.getAttribute('maxlength'));
+            const newValue = currentValue.substring(0, start) + filteredText + currentValue.substring(end);
+            
+            if (newValue.length <= maxLength) {
+                input.value = newValue;
+              
+                const newCursorPos = start + filteredText.length;
+                input.setSelectionRange(newCursorPos, newCursorPos);
+            } else {
+             
+                const availableSpace = maxLength - currentValue.length + (end - start);
+                const textToInsert = filteredText.substring(0, availableSpace);
+                input.value = currentValue.substring(0, start) + textToInsert + currentValue.substring(end);
+                input.setSelectionRange(maxLength, maxLength);
+            }
+        });
+    </script>
+</body>
+</html>

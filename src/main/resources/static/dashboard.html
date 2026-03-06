@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Estacionamiento</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-wrapper">
+                    <div class="logo">P</div>
+                    <div class="logo-text">
+                        <h3>Sistema de</h3>
+                        <p>Estacionamiento</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="user-section">
+                <h4></h4>
+                <p class="user-name" id="userName"></p>
+                <p class="user-role"></p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    Dashboard
+                </a>
+                
+                <a href="vehiculos.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 6l3 4s2 2 2 5-2 3-2 3H5s-2 0-2-3 2-5 2-5l3-4m0 0h8m-8 0v4m8-4v4m-8 4h8"></path>
+                    </svg>
+                    Vehículos
+                </a>
+                
+                <a href="clientes.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    Clientes
+                </a>
+                
+                <a href="empleados.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Empleados
+                </a>
+                
+                <a href="entradas.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+                        <polyline points="10 17 15 12 10 7"></polyline>
+                        <line x1="15" y1="12" x2="3" y2="12"></line>
+                    </svg>
+                    Entradas
+                </a>
+                
+                <a href="salidas.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Salidas
+                </a>
+                
+                <a href="reportes.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                    Reportes
+                </a>
+                
+                <a href="#" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m11-6h-6m-6 0H1"></path>
+                    </svg>
+                    Configuración
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <a href="#" class="logout-btn" onclick="logout()">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Dashboard</h1>
+                <div class="header-info">
+                    <span class="connection-status">
+                        <span class="status-dot"></span>
+                        Conectado
+                    </span>
+                    <span class="user-info">
+                        
+                        <small>EMPLEADO</small>
+                    </span>
+                </div>
+            </header>
+            
+            <div class="content-wrapper">
+                <p class="last-update">Última actualización: <span id="lastUpdate">17/06/2024, 10:25 a.m.</span></p>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon car">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M16 6l3 4s2 2 2 5-2 3-2 3H5s-2 0-2-3 2-5 2-5l3-4m0 0h8m-8 0v4m8-4v4m-8 4h8"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Total Espacios</h3>
+                            <p class="stat-value" id="totalEspacios">124</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon available">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Espacios Disponibles</h3>
+                            <p class="stat-value" id="espaciosDisponibles">856</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon occupied">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Espacios Ocupados</h3>
+                            <p class="stat-value" id="espaciosOcupados">12</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>Ingresos del Día</h3>
+                            <p class="stat-value" id="ingresosDia">S/. 2,450</p>
+                        </div>
+                    </div>
+                </div>
+                
+        
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h2>Entradas Recientes</h2>
+                        <div class="entries-list" id="recentEntries">
+                            <div class="entry-item">
+                                <div class="entry-info">
+                                    <span class="plate">ABC-123</span>
+                                    <span class="location">Piso 1</span>
+                                </div>
+                                <div class="entry-details">
+                                    <span class="time">10:30</span>
+                                    <span class="zone">Zona A-15</span>
+                                </div>
+                            </div>
+                            
+                            <div class="entry-item">
+                                <div class="entry-info">
+                                    <span class="plate">XYZ-789</span>
+                                    <span class="location">Sótano 1</span>
+                                </div>
+                                <div class="entry-details">
+                                    <span class="time">10:25</span>
+                                    <span class="zone">Zona B-08</span>
+                                </div>
+                            </div>
+                            
+                            <div class="entry-item">
+                                <div class="entry-info">
+                                    <span class="plate">DEF-456</span>
+                                    <span class="location">Piso 1</span>
+                                </div>
+                                <div class="entry-details">
+                                    <span class="time">10:15</span>
+                                    <span class="zone">Zona A-23</span>
+                                </div>
+                            </div>
+                            
+                            <div class="entry-item">
+                                <div class="entry-info">
+                                    <span class="plate">GHI-012</span>
+                                    <span class="location">Piso 2</span>
+                                </div>
+                                <div class="entry-details">
+                                    <span class="time">10:05</span>
+                                    <span class="zone">Zona C-17</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h2>Ocupación por Nivel</h2>
+                        <div class="level-stats" id="levelOccupation">
+                            <div class="level-item">
+                                <div class="level-info">
+                                    <span class="level-name">Sótano 1</span>
+                                    <span class="level-percentage">85%</span>
+                                </div>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 85%; background: #ff9800;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="level-item">
+                                <div class="level-info">
+                                    <span class="level-name">Piso Bajo</span>
+                                    <span class="level-percentage">92%</span>
+                                </div>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 92%; background: #4caf50;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="level-item">
+                                <div class="level-info">
+                                    <span class="level-name">Piso 1</span>
+                                    <span class="level-percentage">78%</span>
+                                </div>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 78%; background: #ffc107;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="level-item">
+                                <div class="level-info">
+                                    <span class="level-name">Piso 2</span>
+                                    <span class="level-percentage">65%</span>
+                                </div>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 65%; background: #2196f3;"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="level-item">
+                                <div class="level-info">
+                                    <span class="level-name">Piso 3</span>
+                                    <span class="level-percentage">45%</span>
+                                </div>
+                                <div class="level-bar">
+                                    <div class="level-progress" style="width: 45%; background: #9c27b0;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="js/utils.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
